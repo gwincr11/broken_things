@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tests</h1>
+
+<form>
+  <fieldset disabled="true">
+    <p>Link should run as AJAX request but doesn't.</p>
+    <%=link_to "test", new_test_path, data: {remote: true} %>
+    <br/>
+    <p>Submit tag being disabled confirms the fieldset is disabled</p>
+    <%=submit_tag%>
+  </fieldset>
+</form>
+
+<form>
+  <fieldset >
+    <p>Link should run as AJAX request and does.</p>
+    <%=link_to "test", new_test_path, id: 'alink', data: {remote: true} %>
+    <br/>
+    <p>Submit tag not being disabled confirms the fieldset is not disabled</p>
+    <%=submit_tag%>
+  </fieldset>
+</form>
+
+<script>
+document.getElementById('alink').addEventListener('ajax:complete', function(){
+  alert('ajax:complete!');
+});
+</script>
