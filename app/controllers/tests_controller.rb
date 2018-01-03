@@ -4,6 +4,11 @@ class TestsController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
+    puts "="*99
+    puts request
+    puts request.referer
+
+    puts "="*99
     @tests = Test.all
   end
 

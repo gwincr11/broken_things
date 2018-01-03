@@ -5,7 +5,7 @@
 <form>
   <fieldset disabled="true">
     <p>Link should run as AJAX request but doesn't.</p>
-    <%=link_to "test", new_test_path, data: {remote: true} %>
+    <%=link_to "test", new_test_path, id: 'alink2', data: {remote: true} %>
     <br/>
     <p>Submit tag being disabled confirms the fieldset is disabled</p>
     <%=submit_tag%>
@@ -23,7 +23,11 @@
 </form>
 
 <script>
-document.getElementById('alink').addEventListener('ajax:complete', function(){
-  alert('ajax:complete!');
-});
+var els = document.getElementsByTagName('a')
+
+for(i=0; i < els.length; i++) {
+  els[i].addEventListener('ajax:complete', function(){
+    alert('ajax:complete!');
+  });
+}
 </script>
